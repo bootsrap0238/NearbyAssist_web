@@ -1,10 +1,12 @@
-import ExampleButton from "./components/example_button";
+import ExampleContextProvider from "./context/example_context";
+import ExamplePage from "./pages/example_page";
 
 export default function App() {
     return (
-        <div>
-            <h1>Hello world</h1>
-            <ExampleButton />
-        </div>
+        <ExampleContextProvider>
+            <div>
+                <ExamplePage />
+            </div>
+        </ExampleContextProvider>
     );
 }
