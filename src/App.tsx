@@ -7,6 +7,7 @@ import Dashboard from "./pages/dashboard";
 import Complaints from "./pages/complaints";
 import VendorApplication from "./pages/vendor_application";
 import NotFound from "./pages/not_found";
+import AccountRestriction from "./pages/account_restriction";
 
 export default function App() {
     return (
@@ -19,6 +20,10 @@ export default function App() {
                 <Route
                     path="/vendor_application"
                     element={<VendorApplication />}
+                />
+                <Route
+                    path="/account_restriction"
+                    element={<AccountRestriction />}
                 />
                 <Route path="/example" element={<ExamplePage />} />
                 <Route path="*" element={<NotFound />} />
