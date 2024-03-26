@@ -8,6 +8,7 @@ import Complaints from "./pages/complaints";
 import VendorApplication from "./pages/vendor_application";
 import NotFound from "./pages/not_found";
 import AccountRestriction from "./pages/account_restriction";
+import AccountManagement from "./pages/account_management";
 
 export default function App() {
     return (
@@ -24,6 +25,10 @@ export default function App() {
                 <Route
                     path="/account_restriction"
                     element={<AccountRestriction />}
+                />
+                <Route
+                    path="/account_management"
+                    element={<AccountManagement />}
                 />
                 <Route path="/example" element={<ExamplePage />} />
                 <Route path="*" element={<NotFound />} />
