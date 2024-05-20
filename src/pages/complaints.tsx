@@ -4,19 +4,19 @@ export default function Complaints() {
     return (
         <div className="flex-1 p-4">
             <div className="bg-green-600 px-4 py-4 text-white">
-                <h1 className="font-semibold text-2xl">User Complaints</h1>
+                <h1 className="text-2xl font-semibold">User Complaints</h1>
             </div>
-            <div className="flex justify-between items-center border-gray-200 bg-white shadow-md mx-auto mb-2 p-4 border rounded-md">
-                <div className="flex justify-start items-center">
-                    <p className="mr-4 text-m">Show</p>
+            <div className="mx-auto mb-2 flex items-center justify-between rounded-md border border-gray-200 bg-white p-4 shadow-md">
+                <div className="flex items-center justify-start">
+                    <p className="text-m mr-4">Show</p>
                     <button
                         id="dropdownDividerButton"
                         data-dropdown-toggle="dropdownDivider"
-                        className="inline-flex items-center bg-green-600 hover:bg-green-800 dark:hover:bg-green-700 dark:bg-green-600 px-5 py-2.5 rounded-lg font-medium text-center text-sm text-white"
+                        className="inline-flex items-center rounded-lg bg-green-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700"
                         type="button"
                     >
                         <svg
-                            className="w-2.5 h-2.5 ms-3"
+                            className="ms-3 h-2.5 w-2.5"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -32,39 +32,39 @@ export default function Complaints() {
                         </svg>
                     </button>
                 </div>
-                <div className="flex justify-end mb-2">
+                <div className="mb-2 flex justify-end">
                     <input
                         type="text"
                         placeholder="Search"
-                        className="px-3 py-2 border rounded-md outline-none"
+                        className="rounded-md border px-3 py-2 outline-none"
                     />
-                    <button className="bg-green-600 hover:bg-green-800 ml-2 px-4 py-2 rounded-md text-white">
+                    <button className="ml-2 rounded-md bg-green-600 px-4 py-2 text-white hover:bg-green-800">
                         Search
                     </button>
                 </div>
             </div>
-            <table className="border-gray-300 border rounded-lg w-full">
+            <table className="w-full rounded-lg border border-gray-300">
                 <thead>
-                    <tr className="border-gray-800 bg-green-600 border">
-                        <th className="px-6 py-3 font-medium text-left text-white">
+                    <tr className="border border-gray-800 bg-green-600">
+                        <th className="px-6 py-3 text-left font-medium text-white">
                             Number of Complaints
                         </th>
-                        <th className="px-6 py-3 font-medium text-left text-white">
+                        <th className="px-6 py-3 text-left font-medium text-white">
                             Complainant Name
                         </th>
-                        <th className="px-6 py-3 font-medium text-left text-white">
+                        <th className="px-6 py-3 text-left font-medium text-white">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="border-gray-800 border">
+                    <tr className="border border-gray-800">
                         <td className="px-6 py-4">1</td>
                         <td className="px-6 py-4">Complainant 1</td>
                         <td className="px-6 py-4">
                             <ul>
                                 <Link
-                                    to={"/content/complaintsdetails"}
+                                    to={"/complaints/1"}
                                     className="text-blue-500 hover:underline"
                                 >
                                     View Details
@@ -72,13 +72,13 @@ export default function Complaints() {
                             </ul>
                         </td>
                     </tr>
-                    <tr className="border-gray-800 border">
+                    <tr className="border border-gray-800">
                         <td className="px-6 py-4">2</td>
                         <td className="px-6 py-4">Complainant 2</td>
                         <td className="px-6 py-4">
                             <ul>
                                 <Link
-                                    to={"/content/complaintsdetails"}
+                                    to={"/complaints/2"}
                                     className="text-blue-500 hover:underline"
                                 >
                                     View Details
@@ -90,7 +90,7 @@ export default function Complaints() {
             </table>
             <div className="mx-auto p-4">
                 <div className="relative">
-                    <span className="bottom left-0 absolute mt-2 text-gray-700 text-sm dark:text-gray-400">
+                    <span className="bottom absolute left-0 mt-2 text-sm text-gray-700 dark:text-gray-400">
                         Showing{" "}
                         <span className="font-semibold text-gray-900 dark:text-white">
                             1
@@ -105,10 +105,10 @@ export default function Complaints() {
                         </span>{" "}
                         Entries
                     </span>
-                    <div className="inline-flex right-0 absolute">
-                        <button className="flex justify-center items-center dark:border-gray-700 bg-gray-800 hover:bg-gray-900 dark:hover:bg-gray-700 dark:bg-gray-800 px-3 rounded-s h-8 font-medium text-sm text-white dark:hover:text-white dark:text-gray-400">
+                    <div className="absolute right-0 inline-flex">
+                        <button className="flex h-8 items-center justify-center rounded-s bg-gray-800 px-3 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                             <svg
-                                className="w-3.5 h-3.5 me-2 rtl:rotate-180"
+                                className="me-2 h-3.5 w-3.5 rtl:rotate-180"
                                 aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -123,9 +123,9 @@ export default function Complaints() {
                                 />
                             </svg>
                         </button>
-                        <button className="flex justify-center items-center border-0 border-gray-700 border-s dark:border-gray-700 bg-gray-800 hover:bg-gray-900 dark:hover:bg-gray-700 dark:bg-gray-800 px-3 rounded-e h-8 font-medium text-sm text-white dark:hover:text-white dark:text-gray-400">
+                        <button className="flex h-8 items-center justify-center rounded-e border-0 border-s border-gray-700 bg-gray-800 px-3 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                             <svg
-                                className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+                                className="ms-2 h-3.5 w-3.5 rtl:rotate-180"
                                 aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
