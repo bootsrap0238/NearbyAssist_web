@@ -49,7 +49,17 @@ const router = createBrowserRouter([
             },
             {
                 path: 'application',
-                element: <VendorApplication />
+                element: <div> <Outlet /> </div>,
+                children: [
+                    {
+                        path: '',
+                        element: <VendorApplication />
+                    },
+                    {
+                        path: ':applicationId',
+                        element: <div> <h1>vendor application details</h1> </div>
+                    }
+                ]
             },
             {
                 path: 'restriction',
