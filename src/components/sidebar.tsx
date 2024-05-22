@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
     return (
-        <div className="rounded-md border shadow-md">
+        <div className="shadow-2xl rounded-md">
             <div className="p-3.5 text-center">
-                <h2 className="font-semi mb-2 text-center text-2xl">
+                <h2 className="mb-2 font-semi text-2xl text-center">
                     <span className="text-black">Nearby</span>
-                    <span className="text-green-600">Assist</span>
+                    <span className="text-primary">Assist</span>
                 </h2>
             </div>
             <div className="mt-8 p-4">
@@ -35,10 +35,7 @@ export default function Sidebar() {
                             />
                         </svg>
                     </NavItem>
-                    <NavItem
-                        path="/application"
-                        title="Vendor Application"
-                    >
+                    <NavItem path="/application" title="Vendor Application">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className={`w-6  `}
@@ -50,10 +47,7 @@ export default function Sidebar() {
                             />
                         </svg>
                     </NavItem>
-                    <NavItem
-                        path="/restriction"
-                        title="Account Restriction"
-                    >
+                    <NavItem path="/restriction" title="Account Restriction">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className={`w-6 `}
@@ -69,10 +63,7 @@ export default function Sidebar() {
                             />
                         </svg>
                     </NavItem>
-                    <NavItem
-                        path="/management"
-                        title="Account Management"
-                    >
+                    <NavItem path="/management" title="Account Management">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className={`w-6 `}
@@ -96,13 +87,14 @@ type NavItemProps = {
 };
 
 function NavItem({ path, title, children }: NavItemProps) {
-
     return (
         <NavLink
             to={path}
             className={({ isActive }) => {
-                const defaultClasses = "flex gap-4 rounded-md px-2 py-2";
-                return isActive ? defaultClasses + " bg-green-600 text-white" : defaultClasses + " text-black hover:bg-green-600";
+                const defaultClass = "flex gap-4 rounded-md px-2 py-2";
+                return isActive
+                    ? defaultClass + " bg-primary text-white"
+                    : defaultClass + " hover:bg-primary-pale text-black";
             }}
         >
             {children}
