@@ -11,7 +11,7 @@ export default function Sidebar() {
             </div>
             <div className="mt-8 p-4">
                 <ul className="space-y-6">
-                    <NavItem path="/dashboard" title="Dashboard">
+                    <NavItem path="/content/dashboard" title="Dashboard">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className={`w-6  `}
@@ -23,7 +23,7 @@ export default function Sidebar() {
                             />
                         </svg>
                     </NavItem>
-                    <NavItem path="/complaints" title="Complaints">
+                    <NavItem path="/content/complaints" title="Complaints">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className={`w-6 `}
@@ -35,6 +35,7 @@ export default function Sidebar() {
                             />
                         </svg>
                     </NavItem>
+
                     <NavItem path="/application" title="Vendor Application">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

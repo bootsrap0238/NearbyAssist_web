@@ -39,7 +39,6 @@ export default {
                 DEFAULT:'#1C1678',
                 darkindigo: '#0A1D56'
             },
-
         }
     },
     plugins: [],
