@@ -4,14 +4,14 @@ import useStorage from "../hooks/use_storage";
 
 interface IAuthContext {
     login: (username: string, password: string) => Promise<{ success: boolean }>
-    logout: () => Promise<void>
+    logout: () => Promise<{ success: boolean }>
 }
 
 export const AuthContext = createContext({} as IAuthContext)
 
 export default function AuthContextProvider({ children }: { children: ReactNode }) {
     const { send } = useRequest();
-    const { updateSavedUser } = useStorage();
+    const { updateSavedUser, getSavedUser } = useStorage();
 
     async function login(username: string, password: string): Promise<{ success: boolean }> {
         const serverAddr = import.meta.env.VITE_BACKEND_URL;
@@ -33,9 +33,27 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
         }
     }
 
-    async function logout() {
-        console.log('logout')
-        // implement logout
+    async function logout(): Promise<{ success: boolean }> {
+        const serverAddr = import.meta.env.VITE_BACKEND_URL;
+        const url = `${serverAddr}/auth/logout`;
+
+        try {
+            const user = getSavedUser();
+            if (user === null) {
+                throw new Error("User not found");
+            }
+
+            const response = await send(user.accessToken, url, "POST", JSON.stringify({ token: user.refreshToken }));
+            if (response === null) {
+                throw new Error("Request failed");
+            }
+
+            updateSavedUser(null);
+            return { success: true };
+        } catch (e) {
+            console.error(e);
+            return { success: false };
+        }
     }
 
     return (
