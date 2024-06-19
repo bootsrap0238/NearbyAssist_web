@@ -97,8 +97,6 @@ export default function useRequest() {
             if (user === null) {
                 throw new Error("No user data found");
             }
-            console.log("refresh token: ", user.refreshToken);
-            console.log("url: ", url);
 
             const response = await fetch(url, {
                 method: "POST",
@@ -116,6 +114,7 @@ export default function useRequest() {
                 accessToken: data.accessToken,
                 refreshToken: user.refreshToken,
                 adminId: user.adminId,
+                role: data.role,
             }
             updateSavedUser(newData);
 

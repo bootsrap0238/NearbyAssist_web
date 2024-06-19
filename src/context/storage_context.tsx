@@ -4,6 +4,7 @@ export type TUserData = {
     accessToken: string,
     refreshToken: string,
     adminId: number,
+    role: string,
 }
 
 interface IStorageContext {

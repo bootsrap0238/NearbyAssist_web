@@ -46,6 +46,7 @@ export default function LoginPage() {
                 throw new Error(response.error);
             }
 
+            // TODO: redirect to page based on role
             navigate("/dashboard");
         } catch (e) {
             console.error(e);
