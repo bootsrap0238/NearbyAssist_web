@@ -23,7 +23,7 @@ export default function useRequest() {
             return { success: false, error: "Request failed" };
         }
 
-        const data = await response.json();
+        let data = await response.json();
         if (response.status === 401) {
             if (data.message === "Invalid credentials") {
                 setIsLoading(false);
@@ -42,6 +42,8 @@ export default function useRequest() {
                     setIsLoading(false);
                     return { success: false, error: "Request failed" };
                 }
+
+                data = await response.json();
             }
         }
 
