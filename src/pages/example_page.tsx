@@ -1,17 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ExampleButton from "../components/example_button";
 import useAuth from "../hooks/use_auth";
-import UseExampleContext from "../hooks/use_example_context";
 import useRequest from "../hooks/use_request";
 import EndpointTester from "../components/endpoint_tester";
 
 export default function ExamplePage() {
-    const { value } = UseExampleContext();
     const navigate = useNavigate();
-
     const { logout } = useAuth();
     const { isLoading } = useRequest();
-
 
     async function sampleLogout() {
         try {
@@ -27,10 +23,10 @@ export default function ExamplePage() {
     }
 
     return (
-        <div className="grid gap-2 p-2">
-            <h1 className="my-2">This is from example page</h1>
-            <p className="my-2">context value: {value}</p>
-            <div className="flex gap-2">
+        <div className="p-2">
+            <h1 className="my-2 text-center">Example Page</h1>
+            <Link to="/" className="pointer text-blue hover:underline" >Home</Link>
+            <div className="my-4 flex gap-2">
                 <ExampleButton
                     title={isLoading ? "loading..." : "test logout"}
                     action={sampleLogout}

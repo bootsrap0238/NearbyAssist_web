@@ -21,13 +21,8 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
     },
     {
+        path: "login",
         element: <LoginPage />,
-        children: [
-            {
-                path: "login",
-                element: <LoginPage />,
-            },
-        ],
     },
     {
         element: <MainLayout />,

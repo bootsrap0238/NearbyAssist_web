@@ -49,6 +49,7 @@ export default function EndpointTester() {
                 e.preventDefault();
 
                 if (isLoading) {
+                    console.error("request is still loading");
                     return;
                 }
 

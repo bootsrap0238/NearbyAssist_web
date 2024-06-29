@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/use_auth";
 
 export default function LoginPage() {
@@ -110,6 +110,7 @@ export default function LoginPage() {
                     >
                         Login
                     </button>
+                    <Link to="/" className="pt-4 text-xs text-blue hover:underline">Home</Link>
                 </form>
             </div>
         </div>
