@@ -1,7 +1,6 @@
 import { ReactNode, createContext } from "react";
 import useRequest from "../hooks/use_request";
 import useStorage from "../hooks/use_storage";
-import { TUserData } from "./storage_context";
 
 type TAuthResponse = {
     success: true
@@ -18,7 +17,7 @@ interface IAuthContext {
 export const AuthContext = createContext({} as IAuthContext)
 
 export default function AuthContextProvider({ children }: { children: ReactNode }) {
-    const { send } = useRequest();
+    const { send, unauthenticatedRequest } = useRequest();
     const { updateSavedUser, getSavedUser } = useStorage();
 
     async function login(username: string, password: string): Promise<TAuthResponse> {
@@ -26,12 +25,17 @@ export default function AuthContextProvider({ children }: { children: ReactNode 
         const url = `${serverAddr}/auth/admin/login`;
 
         try {
-            const response = await send<TUserData>("", url, "POST", JSON.stringify({ username, password }));
-            if (!response.success) {
-                throw new Error(response.error);
+            const response = await unauthenticatedRequest(url, "POST", JSON.stringify({ username, password }));
+            if (response === null) {
+                throw new Error("Login failed");
             }
 
-            updateSavedUser(response.data);
+            if (response.status === 401) {
+                return { success: false, error: "Invalid credentials" };
+            }
+
+            const data = await response.json();
+            updateSavedUser(data);
 
             return { success: true };
         } catch (e) {

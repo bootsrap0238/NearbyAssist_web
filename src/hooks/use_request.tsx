@@ -6,6 +6,7 @@ type TResponse<T> = {
     data: T
 } | {
     success: false,
+    code?: number,
     error: string
 }
 
@@ -13,6 +14,26 @@ export default function useRequest() {
     const [isLoading, setIsLoading] = useState(false);
 
     const { updateSavedUser, getSavedUser } = useContext(StorageContext);
+
+    async function unauthenticatedRequest(url: string, method: string, body?: BodyInit): Promise<Response | null> {
+        try {
+            switch (method) {
+                case "GET":
+                    return await fetch(url);
+                case "POST":
+                    return await fetch(url, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: body,
+                    });
+                default:
+                    throw new Error(`Method ${method} not supported`);
+            }
+        } catch (error) {
+            console.log(error);
+            return null;
+        }
+    }
 
     async function send<T>(accessToken: string, url: string, method: string, body?: BodyInit): Promise<TResponse<T>> {
         setIsLoading(true);
@@ -23,32 +44,32 @@ export default function useRequest() {
             return { success: false, error: "Request failed" };
         }
 
-        let data = await response.json();
         if (response.status === 401) {
-            if (data.message === "Invalid credentials") {
+            const newData = await refreshToken(accessToken);
+            if (newData === null) {
                 setIsLoading(false);
-                return { success: false, error: data.message };
+                return { success: false, code: response.status, error: "Failed to refresh token" };
             }
 
-            if (data.message === "Token has expired") {
-                const newData = await refreshToken(accessToken);
-                if (newData === null) {
-                    setIsLoading(false);
-                    return { success: false, error: "Failed to refresh token" };
-                }
-
-                response = await request(newData.accessToken, url, method, body);
-                if (response === null) {
-                    setIsLoading(false);
-                    return { success: false, error: "Request failed" };
-                }
-
-                data = await response.json();
+            response = await request(newData.accessToken, url, method, body);
+            if (response === null) {
+                setIsLoading(false);
+                return { success: false, error: "Request failed" };
             }
         }
 
+        if (response.status === 404) {
+            setIsLoading(false);
+            return { success: false, code: response.status, error: response.statusText };
+        }
+
+        if (response.status >= 300) {
+            setIsLoading(false);
+            return { success: false, code: response.status, error: response.statusText };
+        }
+
         setIsLoading(false);
-        return { success: true, data: data };
+        return { success: true, data: await response.json() };
     }
 
     async function request(accessToken: string, url: string, method: string, body?: BodyInit): Promise<Response | null> {
@@ -58,28 +79,20 @@ export default function useRequest() {
         }
 
         try {
-            let response: Response | null = null;
-
             switch (method) {
                 case "GET":
-                    response = await fetch(url, {
+                    return await fetch(url, {
                         headers: headers,
                     })
-                    break;
-
                 case "POST":
-                    response = await fetch(url, {
+                    return await fetch(url, {
                         method: "POST",
                         headers: headers,
                         body: body,
                     })
-                    break;
-
                 default:
                     throw new Error(`Method ${method} not supported`);
             }
-
-            return response;
         } catch (e) {
             console.error(e);
             return null;
@@ -129,6 +142,7 @@ export default function useRequest() {
 
     return {
         isLoading,
+        unauthenticatedRequest,
         send
     }
 }
