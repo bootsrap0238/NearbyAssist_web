@@ -93,7 +93,7 @@ export default function Complaints() {
                         <select
                             value={entriesPerPage}
                             onChange={handleEntriesChange}
-                            className="border-white px-3 py-2 border rounded-md text-black outline-none"
+                            className="border-white bg-primary-greener px-3 py-1 border rounded-md text-white outline-none"
                         >
                             <option value={5}>5</option>
                             <option value={10}>10</option>
