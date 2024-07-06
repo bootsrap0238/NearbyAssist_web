@@ -5,49 +5,47 @@ export default function AccountRestriction() {
         <div className="flex-1 p-4">
             <div className="bg-primary px-4 py-4 text-white">
                 <h1 className="font-semibold text-2xl">Restricted Accounts</h1>
-            </div>
-
-            <div className="flex justify-between items-center shadow-md mx-auto mt-2 mb-2 p-4 border rounded-md">
-                <div className="flex justify-start items-center">
-                    <p className="mr-4 font-semibold text-lg">Show</p>
-                    <button
-                        id="dropdownDividerButton"
-                        data-dropdown-toggle="dropdownDivider"
-                        className="inline-flex items-center bg-primary hover:bg-primary-pale dark:hover:bg-primary px-5 py-2.5 rounded-lg font-medium text-center text-sm text-white"
-                        type="button"
-                    >
-                        <svg
-                            className="w-2.5 h-2.5 ms-3"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 10 6"
+                <div className="flex justify-between items-center mx-auto">
+                    <div className="flex justify-start items-center">
+                        <p className="mr-4 font-semibold text-lg">Show</p>
+                        <button
+                            id="dropdownDividerButton"
+                            data-dropdown-toggle="dropdownDivider"
+                            className="inline-flex items-center border-white bg-primary-greener hover:bg-primary-pale dark:hover:bg-primary px-5 py-2.5 border rounded-lg font-medium text-center text-sm text-white"
+                            type="button"
                         >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="m1 1 4 4 4-4"
-                            />
-                        </svg>
-                    </button>
-                </div>
-                <div className="flex justify-end mb-2">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="px-3 py-2 border rounded-md outline-none"
-                    />
-                    <button className="bg-primary hover:bg-primary-pale ml-2 px-4 py-2 rounded-md font-semibold text-white">
-                        Search
-                    </button>
+                            <svg
+                                className="w-2.5 h-2.5 ms-3"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 10 6"
+                            >
+                                <path
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="m1 1 4 4 4-4"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <div className="flex justify-end mb-2">
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            className="border-white px-3 py-2 border rounded-md outline-none"
+                        />
+                        <button className="border-white bg-primary-greener hover:bg-primary-pale ml-2 px-4 py-2 border rounded-md font-semibold text-white">
+                            Search
+                        </button>
+                    </div>
                 </div>
             </div>
-
-            <table className="border-gray border rounded-lg w-full">
+            <table className="border-gray mt-4 border rounded-lg w-full">
                 <thead>
-                    <tr className="bg-primary border">
+                    <tr className="bg-primary-greener border">
                         <th className="px-6 py-3 font-medium text-left text-white">
                             Account ID
                         </th>

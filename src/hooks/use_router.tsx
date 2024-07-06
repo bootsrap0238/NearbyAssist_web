@@ -13,6 +13,8 @@ import ExamplePage from "../pages/example_page";
 import ApplicationDetails from "../pages/application_details";
 import ComplaintLayout from "../layout/complaint_layout";
 import ApplicationLayout from "../layout/application_layout";
+import RestrictionLayout from "../layout/restriction_layout";
+import RestrictAction from "../pages/restrict_action";
 
 const router = createBrowserRouter([
     {
@@ -61,7 +63,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "restriction",
-                element: <AccountRestriction />,
+                element: <RestrictionLayout />,
+                children: [
+                    {
+                        path: "",
+                        element: <AccountRestriction />,
+                    },
+                    {
+                        path: ":restrictId",
+                        element: <RestrictAction />,
+                    },
+                ],
             },
             {
                 path: "management",
