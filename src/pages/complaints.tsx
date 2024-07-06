@@ -138,6 +138,14 @@ export default function Complaints() {
                     </tr>
                 </thead>
                 <tbody>
+                    {complaints.length === 0 && !isLoading && (
+                        <tr>
+                            <td colSpan={4} className="py-4 text-center">
+                                <p>There are no complaints data</p>
+                            </td>
+                        </tr>
+                    )}
+
                     {isLoading ? (
                         <tr>
                             <td colSpan={4} className="py-4 text-center">
@@ -207,7 +215,9 @@ export default function Complaints() {
                     </span>
                     <div className="inline-flex right-0 absolute">
                         <button
-                            onClick={() => handlePageChange("prev")}
+                            onClick={function () {
+                                handlePageChange("prev");
+                            }}
                             className="flex justify-center items-center bg-gray hover:bg-gray-darkgray dark:hover:bg-gray dark:bg-gray-darkgray px-3 rounded-s h-8 font-medium text-sm text-white dark:hover:text-white dark:text-gray"
                         >
                             <svg
@@ -227,7 +237,9 @@ export default function Complaints() {
                             </svg>
                         </button>
                         <button
-                            onClick={() => handlePageChange("next")}
+                            onClick={function () {
+                                handlePageChange("next");
+                            }}
                             className="flex justify-center items-center bg-gray hover:bg-gray-darkgray dark:hover:bg-gray dark:bg-gray-darkgray px-3 rounded-e h-8 font-medium text-sm text-white dark:hover:text-white dark:text-gray"
                         >
                             <svg
