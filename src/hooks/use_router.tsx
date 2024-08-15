@@ -85,6 +85,20 @@ const router = createBrowserRouter([
                 element: <AccountManagement />,
             },
             {
+                path: "system_issues",
+                element: <SystemIssuesLayout />,
+                children: [
+                    {
+                        path: "",
+                        element: <SystemIssues />,
+                    },
+                    {
+                        path: ":systemissueId",
+                        element: <SystemIssuesDetails />,
+                    },
+                ],
+            },
+            {
                 path: "example",
                 element: <ExamplePage />,
             },
