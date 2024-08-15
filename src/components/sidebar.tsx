@@ -19,7 +19,7 @@ export default function Sidebar() {
                         >
                             <path
                                 fill="currentColor"
-                                d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"
+                                d="M15.21 2H8.75A6.76 6.76 0 0 0 2 8.75v6.5A6.76 6.76 0 0 0 8.75 22h6.5A6.76 6.76 0 0 0 22 15.25v-6.5A6.76 6.76 0 0 0 15.21 2M8.43 16.23a.8.8 0 1 1-1.6 0v-5.1a.8.8 0 0 1 1.6 0zm4.45 0a.8.8 0 1 1-1.6 0V7.78a.8.8 0 0 1 1.6 0zm4.21 0a.8.8 0 1 1-1.6 0V9.82a.8.8 0 0 1 1.6 0z"
                             />
                         </svg>
                     </NavItem>
@@ -35,7 +35,18 @@ export default function Sidebar() {
                             />
                         </svg>
                     </NavItem>
-
+                    <NavItem path="/verification" title="Identity Verification">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className={`w-6  `}
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                fill="currentColor"
+                                d="M22 3H2c-1.09.04-1.96.91-2 2v14c.04 1.09.91 1.96 2 2h20c1.09-.04 1.96-.91 2-2V5a2.074 2.074 0 0 0-2-2m0 16H2V5h20zm-8-2v-1.25c0-1.66-3.34-2.5-5-2.5s-5 .84-5 2.5V17zM9 7a2.5 2.5 0 0 0-2.5 2.5A2.5 2.5 0 0 0 9 12a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 9 7m5 0v1h6V7zm0 2v1h6V9zm0 2v1h4v-1z"
+                            />
+                        </svg>
+                    </NavItem>
                     <NavItem path="/application" title="Vendor Application">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
