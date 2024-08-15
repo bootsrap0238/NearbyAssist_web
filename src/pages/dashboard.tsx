@@ -259,7 +259,7 @@ export default function Dashboard() {
                         Number of Users:
                     </h2>
                     {loadingStates.users ? (
-                        <p>Loading...</p>
+                        <p className="font-bold text-3xl">Loading...</p>
                     ) : (
                         <p className="font-bold text-3xl text-blue">
                             {stats.users}
@@ -271,7 +271,7 @@ export default function Dashboard() {
                         Number of Complaints
                     </h2>
                     {loadingStates.complaints ? (
-                        <p>Loading...</p>
+                        <p className="font-bold text-3xl">Loading...</p>
                     ) : (
                         <p className="font-bold text-3xl text-red">
                             {stats.complaints}
@@ -283,7 +283,7 @@ export default function Dashboard() {
                         Restricted Accounts
                     </h2>
                     {loadingStates.restrictedAccounts ? (
-                        <p>Loading...</p>
+                        <p className="font-bold text-3xl">Loading...</p>
                     ) : (
                         <p className="font-bold text-3xl text-yellow">
                             {stats.restrictedAccounts}
@@ -295,7 +295,7 @@ export default function Dashboard() {
                         Service Vendors
                     </h2>
                     {loadingStates.serviceVendors ? (
-                        <p>Loading...</p>
+                        <p className="font-bold text-3xl">Loading...</p>
                     ) : (
                         <p className="font-bold text-3xl text-primary">
                             {stats.serviceVendors}
@@ -307,7 +307,7 @@ export default function Dashboard() {
                         Pending Applications
                     </h2>
                     {loadingStates.pendingApplications ? (
-                        <p>Loading...</p>
+                        <p className="font-bold text-3xl">Loading...</p>
                     ) : (
                         <p className="font-bold text-3xl text-orange">
                             {stats.pendingApplications}
